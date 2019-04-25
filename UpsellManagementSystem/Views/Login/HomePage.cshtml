@@ -5,13 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-< fieldset >
-    < legend > User DashBoard < /legend>
+<fieldset>
+    <legend> User DashBoard </legend>
 
 @if (Session["UserName"] != null)
 {
     <text>
-        Welcome @Session["UserName"].ToString()
+        Welcome @Session["UserName"].ToString(),
     </text>
 }
-< /fieldset>
+</fieldset>

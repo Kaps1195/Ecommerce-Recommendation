@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="000b2219cc0542ad9577c2d10248c23f" Name="Diagram1">
-        <EntityTypeShape EntityType="ProjectModel.Categories_174866_MiniProj" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectModel.Customers_174866_MiniProj" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectModel.Orders_174866_MiniProj" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectModel.Products_174866_MiniProj" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectModel.ProductsRecommend_174866_MiniProj" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectModel.SalesTax_174866_MiniProj" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectModel.ShoppingCart_174866_MiniProj" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
-        <AssociationConnector Association="ProjectModel.FK__Products___Categ__1273C1CD" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectModel.FK__ProductsR__Categ__164452B1" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectModel.FK__Orders_17__Custo__1B0907CE" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectModel.FK__ProductsR__Produ__15502E78" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectModel.FK__ShoppingC__Produ__20C1E124" ManuallyRouted="false" />
+      <Diagram DiagramId="4c203d827c5946a7bf0416752706bdcc" Name="Diagram1">
+        <EntityTypeShape EntityType="UMSModel.Categories_174866_MiniProj" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMSModel.Customers_174866_MiniProj" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMSModel.Orders_174866_MiniProj" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMSModel.Products_174866_MiniProj" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMSModel.ProductsRecommend_174866_MiniProj" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMSModel.SalesTax_174866_MiniProj" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMSModel.ShoppingCart_174866_MiniProj" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="UMSModel.FK__Products___Categ__1BE8E8C5" ManuallyRouted="false" />
+        <AssociationConnector Association="UMSModel.FK__ProductsR__Categ__2E079900" ManuallyRouted="false" />
+        <AssociationConnector Association="UMSModel.FK__Orders_17__Custo__4CB7D400" ManuallyRouted="false" />
+        <AssociationConnector Association="UMSModel.FK__ProductsR__Produ__2D1374C7" ManuallyRouted="false" />
+        <AssociationConnector Association="UMSModel.FK__ShoppingC__Produ__57FDD2CC" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

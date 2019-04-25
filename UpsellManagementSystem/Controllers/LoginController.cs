@@ -20,7 +20,7 @@ namespace UpsellManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (ProjectEntities db = new ProjectEntities())
+                using (DbEntities db = new DbEntities())
                 {
                     var obj = db.Customers_174866_MiniProj.Where(a => a.FullName.Equals(objUser.FullName) && a.Password.Equals(objUser.Password)).FirstOrDefault();
                     if (obj != null)
@@ -33,7 +33,7 @@ namespace UpsellManagementSystem.Controllers
             return View(objUser);
         }
 
-        public ActionResult UserDashBoard()
+        public ActionResult HomePage()
         {
             if (Session["UserName"] != null)
             {

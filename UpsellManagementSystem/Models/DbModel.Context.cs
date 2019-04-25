@@ -13,10 +13,10 @@ namespace UpsellManagementSystem.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ProjectEntities : DbContext
+    public partial class DbEntities : DbContext
     {
-        public ProjectEntities()
-            : base("name=ProjectEntities")
+        public DbEntities()
+            : base("name=DbEntities")
         {
         }
     
