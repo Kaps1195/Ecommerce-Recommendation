@@ -21,6 +21,7 @@ namespace UpsellManagementSystem.Models
         public string ModelName { get; set; }
         public Nullable<decimal> UnitCost { get; set; }
         public string Description { get; set; }
+        public string imageUrl { get; set; }
     
         public virtual Categories_174866_MiniProj Categories_174866_MiniProj { get; set; }
         public virtual Products_174866_MiniProj Products_174866_MiniProj { get; set; }

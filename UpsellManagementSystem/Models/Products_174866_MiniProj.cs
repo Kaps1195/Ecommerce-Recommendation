@@ -27,6 +27,7 @@ namespace UpsellManagementSystem.Models
         public string ModelName { get; set; }
         public Nullable<decimal> UnitCost { get; set; }
         public string Description { get; set; }
+        public string imageUrl { get; set; }
     
         public virtual Categories_174866_MiniProj Categories_174866_MiniProj { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
