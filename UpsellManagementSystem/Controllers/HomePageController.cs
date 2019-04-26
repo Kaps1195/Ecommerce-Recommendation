@@ -13,15 +13,29 @@ namespace UpsellManagementSystem.Controllers
         // GET: HomePage
         public ActionResult Index(Products_174866_MiniProj products)
         {
-            DbEntities db = new DbEntities();
-            var displayOnlyFirstThreeItems = db.Products_174866_MiniProj.Take(3);
+            DbEntities _products = new DbEntities();
+            var displayAllItems = _products.Products_174866_MiniProj.ToList();
 
-            if (displayOnlyFirstThreeItems != null)
+            if (displayAllItems != null)
             {
-
+                return View(displayAllItems);
             }
-
+            
             return View();
         }
+
+
+        //public ActionResult Index(ProductsRecommend_174866_MiniProj products)
+        //{
+        //    DbEntities _products = new DbEntities();
+        //    var displayAllItems = _products.Products_174866_MiniProj.ToList();
+
+        //    if (displayAllItems != null)
+        //    {
+        //        return View(displayAllItems);
+        //    }
+
+        //    return View();
+        //}
     }
 }

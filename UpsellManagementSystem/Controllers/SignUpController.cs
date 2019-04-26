@@ -9,7 +9,6 @@ namespace UpsellManagementSystem.Controllers
 {
     public class SignUpController : Controller
     {
-
         public ActionResult CreateNewCustomer()
         {
             return View();
