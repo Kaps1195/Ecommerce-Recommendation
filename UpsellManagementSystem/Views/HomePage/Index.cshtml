@@ -5,155 +5,80 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Products List ==> </h2>
-
-
-@foreach (var item in Model)
+@using (Html.BeginForm())
 {
-    <div class="col-sm-6">
-        <div class="card" style="margin:50px 0 50px;text-align:center">
-            <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.imageUrl)" width="100" height="100">
-            <div class="card-body">
-                <h5 class="card-title">@Html.DisplayFor(modelItem => item.ModelName)</h5>
-                <h6 class="card-text">@Html.DisplayFor(modelItem => item.Description)</h6>
-                <button class="btn btn-primary btn-lg">Add to Cart</button>
-            </div>
+    <div style="display:flex;align-items:center;align-content:center;margin:50px 0 50px">
+        <!-- Search With Model Name -->
+        <input class="form-control" type="text" name="ModelName" placeholder="Search With Model Name(Eg: Philips)" aria-label="Search">
+        <div>
+            <select class="form-control" id="sel1">
+                <option>Havells</option>
+                <option>Philips</option>
+            </select>
         </div>
+        <input style="margin-left:20px" type="submit" value="Submit" class="btn" />
     </div>
 }
-
-  <h3 style="text-align:center;margin:50px 0 50px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Check out some of our other products : </h3>
-
-
+<h2>Products List : </h2>
+<div class="grid">
+    @foreach (var product in Model)
+    {
+        <article class="card product-item">
+            <header class="card__header">
+                <h1 class="product__title">
+                    @Html.DisplayFor(modelItem => product.ModelName)
+                </h1>
+            </header>
+            <div class="card__image">
+                <img src="@Html.DisplayFor(modelItem => product.imageUrl)" alt="@Html.DisplayFor(modelItem => product.ModelName)">
+            </div>
+            <div class="card__content">
+                <h2 class="product__price">
+                    $
+                    @Html.DisplayFor(modelItem => product.UnitCost)
+                </h2>
+                <p class="product__description">
+                    @Html.DisplayFor(modelItem => product.Description)
+                </p>
+            </div>
+            <div class="card__actions">
+                <form action="/ProductRecommend/Index" method="POST">
+                    <button class="btn">Add to Cart</button>
+                </form>
+            </div>
+        </article>
+        }
+</div>
+<h3 style="text-align:center;margin:50px 0 50px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Check out some of our other products : </h3>
 @foreach (var item in Model)
 {
     foreach (var i in item.ProductsRecommend_174866_MiniProj)
     {
-        <div>
-            <div class="card" style="margin:50px 0 50px">
-                <img class="card-img-top" src="@Html.DisplayFor(modelItem => i.imageUrl)" width="100" height="100">
-                <div class="card-body">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => i.ModelName)</h5>
-                    <h6 class="card-text">@Html.DisplayFor(modelItem => i.Description)</h6>
-                    <button class="btn btn-primary btn-lg">Add to Cart</button>
-                </div>
+        <article class="card product-item">
+            <header class="card__header">
+                <h1 class="product__title">
+                    @Html.DisplayFor(modelItem => i.ModelName)
+                </h1>
+            </header>
+            <div class="card__image">
+                <img src="@Html.DisplayFor(modelItem => i.imageUrl)" alt="@Html.DisplayFor(modelItem => i.ModelName)">
             </div>
-        </div>
+            <div class="card__content">
+                <h2 class="product__price">
+                    $
+                    @Html.DisplayFor(modelItem => i.UnitCost)
+                </h2>
+                <p class="product__description">
+                    @Html.DisplayFor(modelItem => i.Description)
+                </p>
+            </div>
+            <div class="card__actions">
+                <form action="/add-to-cart" method="POST">
+                    <button class="btn">Add to Cart</button>
+                </form>
+            </div>
+        </article>
     }
 }
 
-@*<table class="table" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
-        <tr>
-            <th>
-                <h4>Model Number</h4>
-            </th>
-            <th>
-                <h4>Model Name</h4>
-            </th>
-            <th>
-                <h4>Unit Cost</h4>
-            </th>
-            <th>
-                <h4>Description</h4>
-            </th>
-            <th>
-                <h4>Image</h4>
-            </th>
-            <th>
-                <h4>Category</h4>
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModelNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModelName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <img src="@Html.DisplayFor(modelItem => item.imageUrl)" width="100" height="80">
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Categories_174866_MiniProj.CategoryName)
-            </td>
-            <td>
-                <button class="btn btn-primary btn-lg">Add to Cart</button>
-            </td>
-        </tr>
-    }
-    </table>
-
-    <div style="text-align:center;margin-top:50px;background-color:aqua;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
-        <h2>Check out some of our other products : </h2>
-        <table class="table">
-            <tr>
-                <th>
-                    <h4>Recommend ID</h4>
-                </th>
-                <th>
-                    <h4>Model Number</h4>
-                </th>
-                <th>
-                    <h4>Model Name</h4>
-                </th>
-                <th>
-                    <h4>Unit Cost</h4>
-                </th>
-                <th>
-                    <h4>Description</h4>
-                </th>
-                <th>
-                    <h4>Image</h4>
-                </th>
-                <th>
-                    <h4>Category</h4>
-                </th>
-                <th></th>
-            </tr>
-            @foreach (var item in Model)
-            {
-                foreach (var i in item.ProductsRecommend_174866_MiniProj)
-                {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => i.ProductsRecId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => i.ModelNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => i.ModelName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => i.UnitCost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => i.Description)
-                </td>
-                <td>
-                    <img src="@Html.DisplayFor(modelItem => i.imageUrl)" width="100" height="80">
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => i.Categories_174866_MiniProj.CategoryName)
-                </td>
-                <td>
-                    <button class="btn btn-primary btn-lg">Add to Cart</button>
-                </td>
-            </tr>
-                }
-
-            }
-        </table>
-
-            <a href="Categories.aspx" class="btn btn-primary btn-sm">Click here to Know More about these Recommended Products</a>
-    </div>*@
 

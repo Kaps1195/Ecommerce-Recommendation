@@ -1,0 +1,41 @@
+﻿@model IEnumerable<UpsellManagementSystem.Models.ProductsRecommend_174866_MiniProj>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product Recommendations </h2>
+
+<h2 class="card-header">
+    Customers who bought this also bought :
+</h2>
+<div class="grid">
+    @foreach (var product in Model)
+    {
+        <article class="card product-item">
+            <header class="card__header">
+                <h1 class="product__title">
+                    @Html.DisplayFor(modelItem => product.ModelName)
+                </h1>
+            </header>
+            <div class="card__image">
+                <img src="@Html.DisplayFor(modelItem => product.imageUrl)" alt="@Html.DisplayFor(modelItem => product.ModelName)">
+            </div>
+            <div class="card__content">
+                <h2 class="product__price">
+                    $
+                    @Html.DisplayFor(modelItem => product.UnitCost)
+                </h2>
+                <p class="product__description">
+                    @Html.DisplayFor(modelItem => product.Description)
+                </p>
+            </div>
+            <div class="card__actions">
+                <form action="/ProductRecommend/Index" method="POST">
+                    <button class="btn">Add to Cart</button>
+                </form>
+            </div>
+        </article>
+    }
+</div>
