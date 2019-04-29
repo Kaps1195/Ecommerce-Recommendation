@@ -9,7 +9,7 @@ namespace UpsellManagementSystem.Controllers
 {
     public class HomePageController : Controller
     {
-        DbEntities _products = new DbEntities();
+        ProjectEntitiesUpdated _products = new ProjectEntitiesUpdated();
         // GET: HomePage
         public ActionResult Index(Products_174866_MiniProj products)
         {

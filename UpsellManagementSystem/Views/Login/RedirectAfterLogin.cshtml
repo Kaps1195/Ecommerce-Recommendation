@@ -1,17 +1,17 @@
 ﻿@model UpsellManagementSystem.Models.Customers_174866_MiniProj
 
 @{
-    ViewBag.Title = "UserDashBoard";
+    ViewBag.Title = "RedirectAfterLogin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <fieldset>
-    <legend> User DashBoard </legend>
+    <legend> User HomePage </legend>
 
-@if (Session["UserName"] != null)
-{
-    <text>
-        Welcome @Session["UserName"].ToString(),
-    </text>
-}
+    @if (Session["UserName"] != null)
+    {
+        <text>
+            Welcome @Session["UserName"].ToString(),
+        </text>
+    }
 </fieldset>

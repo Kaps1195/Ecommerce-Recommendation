@@ -4,7 +4,16 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<fieldset>
+    <legend> User HomePage </legend>
 
+    @if (Session["UserName"] != null)
+    {
+        <text>
+            Welcome @Session["UserName"].ToString(),
+        </text>
+    }
+</fieldset>
 @using (Html.BeginForm())
 {
     <div style="display:flex;align-items:center;align-content:center;margin:50px 0 50px">

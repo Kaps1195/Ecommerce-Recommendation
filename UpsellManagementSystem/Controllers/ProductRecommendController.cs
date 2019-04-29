@@ -9,7 +9,7 @@ namespace UpsellManagementSystem.Controllers
 {
     public class ProductRecommendController : Controller
     {
-        DbEntities _products = new DbEntities();
+        ProjectEntitiesUpdated _products = new ProjectEntitiesUpdated();
 
         // GET: ProductRecommend
         public ActionResult Index(ProductsRecommend_174866_MiniProj recommendProd)

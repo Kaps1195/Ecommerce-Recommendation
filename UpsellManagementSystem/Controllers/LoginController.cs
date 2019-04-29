@@ -20,20 +20,20 @@ namespace UpsellManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (DbEntities db = new DbEntities())
+                using (ProjectEntitiesUpdated db = new ProjectEntitiesUpdated())
                 {
                     var obj = db.Customers_174866_MiniProj.Where(a => a.FullName.Equals(objUser.FullName) && a.Password.Equals(objUser.Password)).FirstOrDefault();
                     if (obj != null)
                     {
                         Session["UserName"] = obj.FullName.ToString();
-                        return RedirectToAction("UserDashBoard");
+                        return RedirectToAction("Index","HomePage");
                     }
                 }
             }
             return View(objUser);
         }
 
-        public ActionResult HomePage()
+        public ActionResult RedirectAfterLogin()
         {
             if (Session["UserName"] != null)
             {
