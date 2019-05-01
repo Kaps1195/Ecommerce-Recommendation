@@ -22,10 +22,10 @@ namespace UpsellManagementSystem.Controllers
             {
                 using (ProjectEntitiesUpdated db = new ProjectEntitiesUpdated())
                 {
-                    var obj = db.Customers_174866_MiniProj.Where(a => a.FullName.Equals(objUser.FullName) && a.Password.Equals(objUser.Password)).FirstOrDefault();
+                    var obj = db.Customers_174866_MiniProj.Where(a => a.Email.Equals(objUser.Email) && a.Password.Equals(objUser.Password)).FirstOrDefault();
                     if (obj != null)
                     {
-                        Session["UserName"] = obj.FullName.ToString();
+                        Session["Email"] = obj.Email.ToString();
                         return RedirectToAction("Index","HomePage");
                     }
                 }
