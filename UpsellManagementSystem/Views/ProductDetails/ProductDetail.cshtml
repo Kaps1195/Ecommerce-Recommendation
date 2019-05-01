@@ -1,0 +1,66 @@
+﻿@model UpsellManagementSystem.Models.Products_174866_MiniProj
+
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var item = TempData["userSelectedProduct"] as UpsellManagementSystem.Models.Products_174866_MiniProj;
+}
+
+<h2>Product Details</h2>
+
+<fieldset>
+
+    @if (Session["Email"] != null)
+    {
+        <text>
+            Welcome @Session["Email"].ToString(),
+        </text>
+    }
+</fieldset>
+
+<table class="table">
+    <tr>
+        <th>
+            Model Number
+        </th>
+        <th>
+            Model Name
+        </th>
+        <th>
+            Unit Cost
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+           Product Image
+        </th>
+        <th>
+            Category
+        </th>
+        <th></th>
+    </tr>
+
+    <tr>
+        <td>
+            @item.ModelNumber
+        </td>
+        <td>
+            @item.ModelName
+        </td>
+        <td>
+            @item.UnitCost
+        </td>
+        <td>
+            @item.Description
+        </td>
+        <td>
+           <img src="@item.imageUrl" /> 
+        </td>
+        <td>
+            @item.Categories_174866_MiniProj.CategoryName
+        </td>
+    </tr>
+
+
+</table>
