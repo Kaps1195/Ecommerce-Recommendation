@@ -7,10 +7,10 @@
 <fieldset>
     <legend> User HomePage </legend>
 
-    @if (Session["UserName"] != null)
+    @if (Session["Email"] != null)
     {
         <text>
-            Welcome @Session["UserName"].ToString(),
+            Welcome @Session["Email"].ToString(),
         </text>
     }
 </fieldset>
@@ -52,7 +52,7 @@
             </div>
             <div class="card__actions">
                 <form action="/ProductRecommend/Index" method="POST">
-                    <button class="btn">Add to Cart</button>
+                    <button class="btn" name="submitProduct">Add to Cart</button>
                 </form>
             </div>
         </article>
@@ -83,7 +83,7 @@
             </div>
             <div class="card__actions">
                 <form action="/add-to-cart" method="POST">
-                    <button class="btn">Add to Cart</button>
+                    <button class="btn" name="submit">Add to Cart</button>
                 </form>
             </div>
         </article>
