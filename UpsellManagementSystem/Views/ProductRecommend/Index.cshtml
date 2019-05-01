@@ -4,9 +4,21 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<fieldset>
+    @if (Session["Email"] != null)
+    {
+        <text>
+            Welcome @Session["Email"].ToString(),
+        </text>
+    }
+</fieldset>
 <h2>Product Recommendations </h2>
 
+<div class="card__actions">
+    <form action="/ProductDetails/ProductDetail">
+        <button class="btn">Skip</button>
+    </form>
+</div>
 <h2 class="card-header">
     Customers who bought this also bought :
 </h2>
