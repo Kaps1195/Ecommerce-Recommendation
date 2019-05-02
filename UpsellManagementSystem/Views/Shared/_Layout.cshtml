@@ -6,25 +6,34 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/priceCalculator.js"></script>
     <link href="~/public/css/HomePage.css" rel="stylesheet" />
     <link href="~/public/css/Layout/Header.css" rel="stylesheet" />
 </head>
 <body>
     <!--Header-->
     <header class="main-header">
-        <nav class="main-header__nav">
-            <ul class="main-header__item-list">
+        <nav class="main-header__nav navbar navbar-expand-lg">
+            <ul class="navbar-nav">
                 <li class="main-header__item">
-                    <a href="/">HiFiShopee</a>
+                    <div class="nav-item">
+                        <a href="/" class="nav-link">HiFiShopee</a>
+                    </div>
                 </li>
                 <li class="main-header__item">
-                    <a href="#">Home</a>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Home</a>
+                    </div>
                 </li>
                 <li class="main-header__item">
-                    <a href="#">Display</a>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Display</a>
+                    </div>
                 </li>
                 <li class="main-header__item">
-                    <a href="#">Cart</a>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Cart</a>
+                    </div>
                 </li>
             </ul>
         </nav>

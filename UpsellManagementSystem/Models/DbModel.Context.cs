@@ -13,10 +13,10 @@ namespace UpsellManagementSystem.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ProjectEntitiesUpdated : DbContext
+    public partial class DBEntities : DbContext
     {
-        public ProjectEntitiesUpdated()
-            : base("name=ProjectEntitiesUpdated")
+        public DBEntities()
+            : base("name=DBEntities")
         {
         }
     
@@ -32,5 +32,6 @@ namespace UpsellManagementSystem.Models
         public virtual DbSet<ProductsRecommend_174866_MiniProj> ProductsRecommend_174866_MiniProj { get; set; }
         public virtual DbSet<SalesTax_174866_MiniProj> SalesTax_174866_MiniProj { get; set; }
         public virtual DbSet<ShoppingCart_174866_MiniProj> ShoppingCart_174866_MiniProj { get; set; }
+        public virtual DbSet<Admin_174866_MiniProj> Admin_174866_MiniProj { get; set; }
     }
 }

@@ -4,7 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin_174866_MiniProj">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="AdminEmail" Type="varchar" MaxLength="320" />
+          <Property Name="AdminPwd" Type="varchar" MaxLength="320" Nullable="false" />
+        </EntityType>
         <EntityType Name="Categories_174866_MiniProj">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -20,17 +28,9 @@
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="FullName" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="320" />
-          <Property Name="Password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="DeliveryAddress" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="OrderDetails_174866_MiniProj">
-          <Property Name="OrderId" Type="int" />
-          <Property Name="CustomerId" Type="int" />
-          <Property Name="Quantity" Type="int" />
-          <Property Name="UnitCost" Type="int" />
-        </EntityType>-->
         <EntityType Name="Orders_174866_MiniProj">
           <Key>
             <PropertyRef Name="OrderId" />
@@ -50,7 +50,7 @@ warning 6013: The table/view 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniP
           <Property Name="ModelName" Type="varchar" MaxLength="100" />
           <Property Name="UnitCost" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Description" Type="varchar" MaxLength="320" />
-          <Property Name="imageUrl" Type="varchar" MaxLength="1000" />
+          <Property Name="imageUrl" Type="varchar" MaxLength="2083" />
         </EntityType>
         <EntityType Name="ProductsRecommend_174866_MiniProj">
           <Key>
@@ -63,7 +63,7 @@ warning 6013: The table/view 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniP
           <Property Name="ModelName" Type="varchar" MaxLength="100" />
           <Property Name="UnitCost" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Description" Type="varchar" MaxLength="320" />
-          <Property Name="imageUrl" Type="varchar" MaxLength="1000" />
+          <Property Name="imageUrl" Type="varchar" MaxLength="2083" />
         </EntityType>
         <EntityType Name="SalesTax_174866_MiniProj">
           <Key>
@@ -86,13 +86,7 @@ warning 6013: The table/view 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniP
           <Property Name="ProductId" Type="int" />
           <Property Name="DateCreated" Type="date" />
         </EntityType>
-        <!--Errors Found During Generation:
-error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__OrderDeta__Custo__4222D4EF" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__OrderDeta__Order__412EB0B6" />-->
-        <Association Name="FK__Orders_17__Custo__3F466844">
+        <Association Name="FK__Orders_17__Custo__745BB106">
           <End Role="Customers_174866_MiniProj" Type="Self.Customers_174866_MiniProj" Multiplicity="0..1" />
           <End Role="Orders_174866_MiniProj" Type="Self.Orders_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -104,7 +98,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Products___Categ__36B12243">
+        <Association Name="FK__Products___Categ__6CBA8F3E">
           <End Role="Categories_174866_MiniProj" Type="Self.Categories_174866_MiniProj" Multiplicity="0..1" />
           <End Role="Products_174866_MiniProj" Type="Self.Products_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -116,7 +110,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductsR__Categ__3A81B327">
+        <Association Name="FK__ProductsR__Categ__708B2022">
           <End Role="Categories_174866_MiniProj" Type="Self.Categories_174866_MiniProj" Multiplicity="0..1" />
           <End Role="ProductsRecommend_174866_MiniProj" Type="Self.ProductsRecommend_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -128,7 +122,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductsR__Produ__398D8EEE">
+        <Association Name="FK__ProductsR__Produ__6F96FBE9">
           <End Role="Products_174866_MiniProj" Type="Self.Products_174866_MiniProj" Multiplicity="0..1" />
           <End Role="ProductsRecommend_174866_MiniProj" Type="Self.ProductsRecommend_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -140,7 +134,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ShoppingC__Produ__44FF419A">
+        <Association Name="FK__ShoppingC__Produ__7A148A5C">
           <End Role="Products_174866_MiniProj" Type="Self.Products_174866_MiniProj" Multiplicity="0..1" />
           <End Role="ShoppingCart_174866_MiniProj" Type="Self.ShoppingCart_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,40 +146,40 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ProjectModelStoreContainer">
-          <EntitySet Name="Categories_174866_MiniProj" EntityType="Self.Categories_174866_MiniProj" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Customers_174866_MiniProj" EntityType="Self.Customers_174866_MiniProj" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Orders_174866_MiniProj" EntityType="Self.Orders_174866_MiniProj" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Products_174866_MiniProj" EntityType="Self.Products_174866_MiniProj" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductsRecommend_174866_MiniProj" EntityType="Self.ProductsRecommend_174866_MiniProj" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SalesTax_174866_MiniProj" EntityType="Self.SalesTax_174866_MiniProj" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ShoppingCart_174866_MiniProj" EntityType="Self.ShoppingCart_174866_MiniProj" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Orders_17__Custo__3F466844" Association="Self.FK__Orders_17__Custo__3F466844">
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="Admin_174866_MiniProj" EntityType="Self.Admin_174866_MiniProj" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="Categories_174866_MiniProj" EntityType="Self.Categories_174866_MiniProj" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="Customers_174866_MiniProj" EntityType="Self.Customers_174866_MiniProj" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="Orders_174866_MiniProj" EntityType="Self.Orders_174866_MiniProj" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="Products_174866_MiniProj" EntityType="Self.Products_174866_MiniProj" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="ProductsRecommend_174866_MiniProj" EntityType="Self.ProductsRecommend_174866_MiniProj" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="SalesTax_174866_MiniProj" EntityType="Self.SalesTax_174866_MiniProj" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="ShoppingCart_174866_MiniProj" EntityType="Self.ShoppingCart_174866_MiniProj" Schema="sqluser" store:Type="Tables" />
+          <AssociationSet Name="FK__Orders_17__Custo__745BB106" Association="Self.FK__Orders_17__Custo__745BB106">
             <End Role="Customers_174866_MiniProj" EntitySet="Customers_174866_MiniProj" />
             <End Role="Orders_174866_MiniProj" EntitySet="Orders_174866_MiniProj" />
           </AssociationSet>
-          <AssociationSet Name="FK__Products___Categ__36B12243" Association="Self.FK__Products___Categ__36B12243">
+          <AssociationSet Name="FK__Products___Categ__6CBA8F3E" Association="Self.FK__Products___Categ__6CBA8F3E">
             <End Role="Categories_174866_MiniProj" EntitySet="Categories_174866_MiniProj" />
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductsR__Categ__3A81B327" Association="Self.FK__ProductsR__Categ__3A81B327">
+          <AssociationSet Name="FK__ProductsR__Categ__708B2022" Association="Self.FK__ProductsR__Categ__708B2022">
             <End Role="Categories_174866_MiniProj" EntitySet="Categories_174866_MiniProj" />
             <End Role="ProductsRecommend_174866_MiniProj" EntitySet="ProductsRecommend_174866_MiniProj" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductsR__Produ__398D8EEE" Association="Self.FK__ProductsR__Produ__398D8EEE">
+          <AssociationSet Name="FK__ProductsR__Produ__6F96FBE9" Association="Self.FK__ProductsR__Produ__6F96FBE9">
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
             <End Role="ProductsRecommend_174866_MiniProj" EntitySet="ProductsRecommend_174866_MiniProj" />
           </AssociationSet>
-          <AssociationSet Name="FK__ShoppingC__Produ__44FF419A" Association="Self.FK__ShoppingC__Produ__44FF419A">
+          <AssociationSet Name="FK__ShoppingC__Produ__7A148A5C" Association="Self.FK__ShoppingC__Produ__7A148A5C">
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
             <End Role="ShoppingCart_174866_MiniProj" EntitySet="ShoppingCart_174866_MiniProj" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Categories_174866_MiniProj">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -193,8 +187,8 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Products_174866_MiniProj" Relationship="Self.FK__Products___Categ__36B12243" FromRole="Categories_174866_MiniProj" ToRole="Products_174866_MiniProj" />
-          <NavigationProperty Name="ProductsRecommend_174866_MiniProj" Relationship="Self.FK__ProductsR__Categ__3A81B327" FromRole="Categories_174866_MiniProj" ToRole="ProductsRecommend_174866_MiniProj" />
+          <NavigationProperty Name="Products_174866_MiniProj" Relationship="Self.FK__Products___Categ__6CBA8F3E" FromRole="Categories_174866_MiniProj" ToRole="Products_174866_MiniProj" />
+          <NavigationProperty Name="ProductsRecommend_174866_MiniProj" Relationship="Self.FK__ProductsR__Categ__708B2022" FromRole="Categories_174866_MiniProj" ToRole="ProductsRecommend_174866_MiniProj" />
         </EntityType>
         <EntityType Name="Customers_174866_MiniProj">
           <Key>
@@ -203,9 +197,9 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DeliveryAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Orders_174866_MiniProj" Relationship="Self.FK__Orders_17__Custo__3F466844" FromRole="Customers_174866_MiniProj" ToRole="Orders_174866_MiniProj" />
+          <NavigationProperty Name="Orders_174866_MiniProj" Relationship="Self.FK__Orders_17__Custo__745BB106" FromRole="Customers_174866_MiniProj" ToRole="Orders_174866_MiniProj" />
         </EntityType>
         <EntityType Name="Orders_174866_MiniProj">
           <Key>
@@ -215,7 +209,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
           <Property Name="CustomerId" Type="Int32" />
           <Property Name="OrderDate" Type="DateTime" Precision="0" />
           <Property Name="ShipDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Customers_174866_MiniProj" Relationship="Self.FK__Orders_17__Custo__3F466844" FromRole="Orders_174866_MiniProj" ToRole="Customers_174866_MiniProj" />
+          <NavigationProperty Name="Customers_174866_MiniProj" Relationship="Self.FK__Orders_17__Custo__745BB106" FromRole="Orders_174866_MiniProj" ToRole="Customers_174866_MiniProj" />
         </EntityType>
         <EntityType Name="Products_174866_MiniProj">
           <Key>
@@ -227,10 +221,10 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
           <Property Name="ModelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="UnitCost" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Description" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
-          <Property Name="imageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Categories_174866_MiniProj" Relationship="Self.FK__Products___Categ__36B12243" FromRole="Products_174866_MiniProj" ToRole="Categories_174866_MiniProj" />
-          <NavigationProperty Name="ProductsRecommend_174866_MiniProj" Relationship="Self.FK__ProductsR__Produ__398D8EEE" FromRole="Products_174866_MiniProj" ToRole="ProductsRecommend_174866_MiniProj" />
-          <NavigationProperty Name="ShoppingCart_174866_MiniProj" Relationship="Self.FK__ShoppingC__Produ__44FF419A" FromRole="Products_174866_MiniProj" ToRole="ShoppingCart_174866_MiniProj" />
+          <Property Name="imageUrl" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Categories_174866_MiniProj" Relationship="Self.FK__Products___Categ__6CBA8F3E" FromRole="Products_174866_MiniProj" ToRole="Categories_174866_MiniProj" />
+          <NavigationProperty Name="ProductsRecommend_174866_MiniProj" Relationship="Self.FK__ProductsR__Produ__6F96FBE9" FromRole="Products_174866_MiniProj" ToRole="ProductsRecommend_174866_MiniProj" />
+          <NavigationProperty Name="ShoppingCart_174866_MiniProj" Relationship="Self.FK__ShoppingC__Produ__7A148A5C" FromRole="Products_174866_MiniProj" ToRole="ShoppingCart_174866_MiniProj" />
         </EntityType>
         <EntityType Name="ProductsRecommend_174866_MiniProj">
           <Key>
@@ -243,9 +237,9 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
           <Property Name="ModelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="UnitCost" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Description" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
-          <Property Name="imageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Categories_174866_MiniProj" Relationship="Self.FK__ProductsR__Categ__3A81B327" FromRole="ProductsRecommend_174866_MiniProj" ToRole="Categories_174866_MiniProj" />
-          <NavigationProperty Name="Products_174866_MiniProj" Relationship="Self.FK__ProductsR__Produ__398D8EEE" FromRole="ProductsRecommend_174866_MiniProj" ToRole="Products_174866_MiniProj" />
+          <Property Name="imageUrl" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Categories_174866_MiniProj" Relationship="Self.FK__ProductsR__Categ__708B2022" FromRole="ProductsRecommend_174866_MiniProj" ToRole="Categories_174866_MiniProj" />
+          <NavigationProperty Name="Products_174866_MiniProj" Relationship="Self.FK__ProductsR__Produ__6F96FBE9" FromRole="ProductsRecommend_174866_MiniProj" ToRole="Products_174866_MiniProj" />
         </EntityType>
         <EntityType Name="SalesTax_174866_MiniProj">
           <Key>
@@ -267,9 +261,9 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
           <Property Name="Quantity" Type="Int32" />
           <Property Name="ProductId" Type="Int32" />
           <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Products_174866_MiniProj" Relationship="Self.FK__ShoppingC__Produ__44FF419A" FromRole="ShoppingCart_174866_MiniProj" ToRole="Products_174866_MiniProj" />
+          <NavigationProperty Name="Products_174866_MiniProj" Relationship="Self.FK__ShoppingC__Produ__7A148A5C" FromRole="ShoppingCart_174866_MiniProj" ToRole="Products_174866_MiniProj" />
         </EntityType>
-        <Association Name="FK__Products___Categ__36B12243">
+        <Association Name="FK__Products___Categ__6CBA8F3E">
           <End Role="Categories_174866_MiniProj" Type="Self.Categories_174866_MiniProj" Multiplicity="0..1" />
           <End Role="Products_174866_MiniProj" Type="Self.Products_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -281,7 +275,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductsR__Categ__3A81B327">
+        <Association Name="FK__ProductsR__Categ__708B2022">
           <End Role="Categories_174866_MiniProj" Type="Self.Categories_174866_MiniProj" Multiplicity="0..1" />
           <End Role="ProductsRecommend_174866_MiniProj" Type="Self.ProductsRecommend_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -293,7 +287,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders_17__Custo__3F466844">
+        <Association Name="FK__Orders_17__Custo__745BB106">
           <End Role="Customers_174866_MiniProj" Type="Self.Customers_174866_MiniProj" Multiplicity="0..1" />
           <End Role="Orders_174866_MiniProj" Type="Self.Orders_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -305,7 +299,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductsR__Produ__398D8EEE">
+        <Association Name="FK__ProductsR__Produ__6F96FBE9">
           <End Role="Products_174866_MiniProj" Type="Self.Products_174866_MiniProj" Multiplicity="0..1" />
           <End Role="ProductsRecommend_174866_MiniProj" Type="Self.ProductsRecommend_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -317,7 +311,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ShoppingC__Produ__44FF419A">
+        <Association Name="FK__ShoppingC__Produ__7A148A5C">
           <End Role="Products_174866_MiniProj" Type="Self.Products_174866_MiniProj" Multiplicity="0..1" />
           <End Role="ShoppingCart_174866_MiniProj" Type="Self.ShoppingCart_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -329,7 +323,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ProjectEntitiesUpdated" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories_174866_MiniProj" EntityType="Self.Categories_174866_MiniProj" />
           <EntitySet Name="Customers_174866_MiniProj" EntityType="Self.Customers_174866_MiniProj" />
           <EntitySet Name="Orders_174866_MiniProj" EntityType="Self.Orders_174866_MiniProj" />
@@ -337,35 +331,44 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
           <EntitySet Name="ProductsRecommend_174866_MiniProj" EntityType="Self.ProductsRecommend_174866_MiniProj" />
           <EntitySet Name="SalesTax_174866_MiniProj" EntityType="Self.SalesTax_174866_MiniProj" />
           <EntitySet Name="ShoppingCart_174866_MiniProj" EntityType="Self.ShoppingCart_174866_MiniProj" />
-          <AssociationSet Name="FK__Products___Categ__36B12243" Association="Self.FK__Products___Categ__36B12243">
+          <AssociationSet Name="FK__Products___Categ__6CBA8F3E" Association="Self.FK__Products___Categ__6CBA8F3E">
             <End Role="Categories_174866_MiniProj" EntitySet="Categories_174866_MiniProj" />
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductsR__Categ__3A81B327" Association="Self.FK__ProductsR__Categ__3A81B327">
+          <AssociationSet Name="FK__ProductsR__Categ__708B2022" Association="Self.FK__ProductsR__Categ__708B2022">
             <End Role="Categories_174866_MiniProj" EntitySet="Categories_174866_MiniProj" />
             <End Role="ProductsRecommend_174866_MiniProj" EntitySet="ProductsRecommend_174866_MiniProj" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders_17__Custo__3F466844" Association="Self.FK__Orders_17__Custo__3F466844">
+          <AssociationSet Name="FK__Orders_17__Custo__745BB106" Association="Self.FK__Orders_17__Custo__745BB106">
             <End Role="Customers_174866_MiniProj" EntitySet="Customers_174866_MiniProj" />
             <End Role="Orders_174866_MiniProj" EntitySet="Orders_174866_MiniProj" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductsR__Produ__398D8EEE" Association="Self.FK__ProductsR__Produ__398D8EEE">
+          <AssociationSet Name="FK__ProductsR__Produ__6F96FBE9" Association="Self.FK__ProductsR__Produ__6F96FBE9">
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
             <End Role="ProductsRecommend_174866_MiniProj" EntitySet="ProductsRecommend_174866_MiniProj" />
           </AssociationSet>
-          <AssociationSet Name="FK__ShoppingC__Produ__44FF419A" Association="Self.FK__ShoppingC__Produ__44FF419A">
+          <AssociationSet Name="FK__ShoppingC__Produ__7A148A5C" Association="Self.FK__ShoppingC__Produ__7A148A5C">
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
             <End Role="ShoppingCart_174866_MiniProj" EntitySet="ShoppingCart_174866_MiniProj" />
           </AssociationSet>
+          <EntitySet Name="Admin_174866_MiniProj" EntityType="DBModel.Admin_174866_MiniProj" />
         </EntityContainer>
+        <EntityType Name="Admin_174866_MiniProj">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <Property Name="AdminEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="AdminPwd" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProjectModelStoreContainer" CdmEntityContainer="ProjectEntitiesUpdated">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
           <EntitySetMapping Name="Categories_174866_MiniProj">
-            <EntityTypeMapping TypeName="ProjectModel.Categories_174866_MiniProj">
+            <EntityTypeMapping TypeName="DBModel.Categories_174866_MiniProj">
               <MappingFragment StoreEntitySet="Categories_174866_MiniProj">
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
@@ -374,7 +377,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers_174866_MiniProj">
-            <EntityTypeMapping TypeName="ProjectModel.Customers_174866_MiniProj">
+            <EntityTypeMapping TypeName="DBModel.Customers_174866_MiniProj">
               <MappingFragment StoreEntitySet="Customers_174866_MiniProj">
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
@@ -385,7 +388,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders_174866_MiniProj">
-            <EntityTypeMapping TypeName="ProjectModel.Orders_174866_MiniProj">
+            <EntityTypeMapping TypeName="DBModel.Orders_174866_MiniProj">
               <MappingFragment StoreEntitySet="Orders_174866_MiniProj">
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
@@ -395,7 +398,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products_174866_MiniProj">
-            <EntityTypeMapping TypeName="ProjectModel.Products_174866_MiniProj">
+            <EntityTypeMapping TypeName="DBModel.Products_174866_MiniProj">
               <MappingFragment StoreEntitySet="Products_174866_MiniProj">
                 <ScalarProperty Name="ProductsId" ColumnName="ProductsId" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
@@ -408,7 +411,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductsRecommend_174866_MiniProj">
-            <EntityTypeMapping TypeName="ProjectModel.ProductsRecommend_174866_MiniProj">
+            <EntityTypeMapping TypeName="DBModel.ProductsRecommend_174866_MiniProj">
               <MappingFragment StoreEntitySet="ProductsRecommend_174866_MiniProj">
                 <ScalarProperty Name="ProductsRecId" ColumnName="ProductsRecId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -422,7 +425,7 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SalesTax_174866_MiniProj">
-            <EntityTypeMapping TypeName="ProjectModel.SalesTax_174866_MiniProj">
+            <EntityTypeMapping TypeName="DBModel.SalesTax_174866_MiniProj">
               <MappingFragment StoreEntitySet="SalesTax_174866_MiniProj">
                 <ScalarProperty Name="SalesTaxId" ColumnName="SalesTaxId" />
                 <ScalarProperty Name="State" ColumnName="State" />
@@ -434,13 +437,22 @@ error 6004: The table 'UpSellDB_MiniProject.dbo.OrderDetails_174866_MiniProj' is
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ShoppingCart_174866_MiniProj">
-            <EntityTypeMapping TypeName="ProjectModel.ShoppingCart_174866_MiniProj">
+            <EntityTypeMapping TypeName="DBModel.ShoppingCart_174866_MiniProj">
               <MappingFragment StoreEntitySet="ShoppingCart_174866_MiniProj">
                 <ScalarProperty Name="RecordId" ColumnName="RecordId" />
                 <ScalarProperty Name="CartId" ColumnName="CartId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin_174866_MiniProj">
+            <EntityTypeMapping TypeName="DBModel.Admin_174866_MiniProj">
+              <MappingFragment StoreEntitySet="Admin_174866_MiniProj">
+                <ScalarProperty Name="AdminPwd" ColumnName="AdminPwd" />
+                <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

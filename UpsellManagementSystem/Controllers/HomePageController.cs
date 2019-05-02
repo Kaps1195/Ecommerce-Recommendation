@@ -9,7 +9,7 @@ namespace UpsellManagementSystem.Controllers
 {
     public class HomePageController : Controller
     {
-        ProjectEntitiesUpdated _products = new ProjectEntitiesUpdated();
+        DBEntities _products = new DBEntities();
         // GET: HomePage
         public ActionResult Index()
         {
@@ -34,19 +34,19 @@ namespace UpsellManagementSystem.Controllers
             return View(searchModelName);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(Products_174866_MiniProj submitProduct)
-        {
-            //string value = Convert.ToString(data["submitProduct"]);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Index(Products_174866_MiniProj submitProduct)
+        //{
+        //    //string value = Convert.ToString(data["submitProduct"]);
 
-            TempData["userSelectedProduct"] = submitProduct;
+        //    TempData["userSelectedProduct"] = submitProduct;
 
-            //return RedirectToAction("ProductDetail", "ProductDetails", new { selectedProd = submitProduct });
+        //    return RedirectToAction("ProductDetail", "ProductDetails", new { selectedProd = submitProduct });
 
-            return RedirectToAction("ProductDetail", "ProductDetails");
+        //    return RedirectToAction("ProductDetail", "ProductDetails");
 
-        }
+        //}
 
     }
 }

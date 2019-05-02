@@ -5,6 +5,16 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+<fieldset style="padding:20px">
+
+    @if (Session["AdminEmail"] != null)
+    {
+        <text>
+            Welcome <b>@Session["AdminEmail"].ToString()</b>,
+        </text>
+    }
+</fieldset>
+
 <h2>Add Product</h2>
 
 @using (Html.BeginForm()) 

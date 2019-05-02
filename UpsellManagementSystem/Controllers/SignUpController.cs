@@ -18,7 +18,7 @@ namespace UpsellManagementSystem.Controllers
         [HttpPost]
         public ActionResult CreateNewCustomer(Customers_174866_MiniProj newCustomer)
         {
-            ProjectEntitiesUpdated db = new ProjectEntitiesUpdated();
+            DBEntities db = new DBEntities();
             db.Customers_174866_MiniProj.Add(newCustomer);
             db.SaveChanges();
             return View(newCustomer);

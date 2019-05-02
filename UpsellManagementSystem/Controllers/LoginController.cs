@@ -20,7 +20,7 @@ namespace UpsellManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (ProjectEntitiesUpdated db = new ProjectEntitiesUpdated())
+                using (DBEntities db = new DBEntities())
                 {
                     var obj = db.Customers_174866_MiniProj.Where(a => a.Email.Equals(objUser.Email) && a.Password.Equals(objUser.Password)).FirstOrDefault();
                     if (obj != null)
@@ -31,18 +31,6 @@ namespace UpsellManagementSystem.Controllers
                 }
             }
             return View(objUser);
-        }
-
-        public ActionResult RedirectAfterLogin()
-        {
-            if (Session["UserName"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
         }
     }
 }

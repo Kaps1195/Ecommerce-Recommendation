@@ -1,0 +1,38 @@
+﻿@model UpsellManagementSystem.Models.Admin_174866_MiniProj
+
+@{
+    ViewBag.Title = "AdminLogin";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Admin Login</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            Admin Email : 
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.AdminEmail)
+                @Html.ValidationMessageFor(model => model.AdminEmail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            Admin Password : 
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.AdminPwd)
+                @Html.ValidationMessageFor(model => model.AdminPwd)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

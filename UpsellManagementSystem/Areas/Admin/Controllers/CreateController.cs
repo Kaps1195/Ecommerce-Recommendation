@@ -9,7 +9,7 @@ namespace UpsellManagementSystem.Areas.Admin.Controllers
 {
     public class CreateController : Controller
     {
-        ProjectEntitiesUpdated _product = new ProjectEntitiesUpdated();
+        DBEntities _product = new DBEntities();
 
         public ActionResult AddCategory()
         {

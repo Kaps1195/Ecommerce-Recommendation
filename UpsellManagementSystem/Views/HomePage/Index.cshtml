@@ -4,29 +4,29 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<fieldset>
-    <legend> User HomePage </legend>
-
+<fieldset style="padding:20px">
     @if (Session["Email"] != null)
     {
         <text>
-            Welcome @Session["Email"].ToString(),
+            <h2>Welcome @Session["Email"].ToString(),</h2>
         </text>
     }
 </fieldset>
+<h3>User HomePage</h3>
 @using (Html.BeginForm())
 {
-    <div style="display:flex;align-items:center;align-content:center;margin:50px 0 50px">
-        <!-- Search With Model Name -->
-        <input class="form-control" type="text" name="ModelName" placeholder="Search With Model Name(Eg: Philips)" aria-label="Search">
-        <div>
-            <select class="form-control" id="sel1">
-                <option>Havells</option>
-                <option>Philips</option>
-            </select>
-        </div>
-        <input style="margin-left:20px" type="submit" value="Submit" class="btn" />
+<div style="display:flex;align-items:center;align-content:center;margin-bottom:50px">
+    <!-- Search With Model Name -->
+    @Html.AntiForgeryToken()
+    <input class="form-control" type="text" name="ModelName" placeholder="Search With Model Name(Eg: Philips)" aria-label="Search">
+    <div>
+        <select class="form-control" id="sel1">
+            <option>Havells</option>
+            <option>Philips</option>
+        </select>
     </div>
+    <input style="margin-left:20px" type="submit" value="Submit" class="btn" />
+</div>
 }
 <h2>Products List : </h2>
 <div class="grid">
@@ -51,43 +51,11 @@
                 </p>
             </div>
             <div class="card__actions">
-                <form action="/ProductRecommend/Index" method="POST">
-                    <button class="btn" name="submitProduct">Add to Cart</button>
-                </form>
-            </div>
-        </article>
-        }
-</div>
-<h3 style="text-align:center;margin:50px 0 50px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Check out some of our other products : </h3>
-@foreach (var item in Model)
-{
-    foreach (var i in item.ProductsRecommend_174866_MiniProj)
-    {
-        <article class="card product-item">
-            <header class="card__header">
-                <h1 class="product__title">
-                    @Html.DisplayFor(modelItem => i.ModelName)
-                </h1>
-            </header>
-            <div class="card__image">
-                <img src="@Html.DisplayFor(modelItem => i.imageUrl)" alt="@Html.DisplayFor(modelItem => i.ModelName)">
-            </div>
-            <div class="card__content">
-                <h2 class="product__price">
-                    $
-                    @Html.DisplayFor(modelItem => i.UnitCost)
-                </h2>
-                <p class="product__description">
-                    @Html.DisplayFor(modelItem => i.Description)
-                </p>
-            </div>
-            <div class="card__actions">
-                <form action="/add-to-cart" method="POST">
-                    <button class="btn" name="submit">Add to Cart</button>
-                </form>
+                @Html.ActionLink("Add to Cart", "ProductDetail", "ProductDetails", new { submitProduct = product.ModelName }, new { @class= "btn" })
             </div>
         </article>
     }
-}
+</div>
+
 
 

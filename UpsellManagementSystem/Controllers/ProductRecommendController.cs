@@ -9,16 +9,16 @@ namespace UpsellManagementSystem.Controllers
 {
     public class ProductRecommendController : Controller
     {
-        ProjectEntitiesUpdated _products = new ProjectEntitiesUpdated();
+        DBEntities _products = new DBEntities();
 
         // GET: ProductRecommend
-        public ActionResult Index(ProductsRecommend_174866_MiniProj recommendProd)
+        public ActionResult Index(int submitProductId)
         {
-            var displayAllItems = _products.ProductsRecommend_174866_MiniProj.ToList();
+            var displayRecommendedItemAsPerUserInput = _products.ProductsRecommend_174866_MiniProj.Where(x => x.ProductId == submitProductId).ToList();
 
-            if (displayAllItems != null)
+            if (displayRecommendedItemAsPerUserInput != null)
             {
-                return View(displayAllItems);
+                return View(displayRecommendedItemAsPerUserInput);
             }
 
             return View();

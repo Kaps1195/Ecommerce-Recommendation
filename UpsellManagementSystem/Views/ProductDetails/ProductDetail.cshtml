@@ -3,64 +3,102 @@
 @{
     ViewBag.Title = "ProductDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var item = TempData["userSelectedProduct"] as UpsellManagementSystem.Models.Products_174866_MiniProj;
 }
 
 <h2>Product Details</h2>
 
-<fieldset>
+<div>
+    <h4>Product Selected : </h4>
+    <hr />
 
-    @if (Session["Email"] != null)
-    {
-        <text>
-            Welcome @Session["Email"].ToString(),
-        </text>
-    }
-</fieldset>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="@Html.DisplayFor(model => model.imageUrl)" alt="@Html.DisplayFor(model => model.ModelName)" style="width:100%;height:30rem" />
+            </div>
+            <div class="col-lg-6">
+                <ul class="card">
+                    <li style="list-style:none">
+                        <h3 class="card-title">@Html.DisplayFor(model => model.ModelName)</h3>
+                    </li>
+                    <li style="list-style:none">
+                        <div id="product">$  @Html.DisplayFor(model => model.UnitCost) </div>
+                        +
+                        <div> $ 5.00 (General Tax on every product) </div>
+                        <hr />
+                    </li>
+                    <li style="list-style:none" onload="calculatePrice()">
+                        <div id="price">
+                            @*<p>Total Price : </p>*@
+                        </div>
+                    </li>
+                    <li style="list-style:none">
+                        Description :
+                        <p>@Html.DisplayFor(model => model.Description)</p>
+                    </li>
+                    <hr />
+                    <li style="list-style:none;padding:10px">
+                        <span>
+                            @Html.ActionLink("Add to Cart", "Index", "ProductRecommend",new { submitProductId = Html.DisplayFor(model => model.ProductsId) }, new { @class = "btn" })
+                        </span>
+                        <span style="margin-left:10rem">
+                            @Html.ActionLink("Checkout", "Index", "ProductRecommend", new { @class = "btn" })
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-<table class="table">
-    <tr>
-        <th>
-            Model Number
-        </th>
-        <th>
-            Model Name
-        </th>
-        <th>
-            Unit Cost
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-           Product Image
-        </th>
-        <th>
-            Category
-        </th>
-        <th></th>
-    </tr>
+    @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ModelNumber)
+            </dt>
 
-    <tr>
-        <td>
-            @item.ModelNumber
-        </td>
-        <td>
-            @item.ModelName
-        </td>
-        <td>
-            @item.UnitCost
-        </td>
-        <td>
-            @item.Description
-        </td>
-        <td>
-           <img src="@item.imageUrl" /> 
-        </td>
-        <td>
-            @item.Categories_174866_MiniProj.CategoryName
-        </td>
-    </tr>
+            <dd>
+                @Html.DisplayFor(model => model.ModelNumber)
+            </dd>
 
+            <dt>
+                @Html.DisplayNameFor(model => model.ModelName)
+            </dt>
 
-</table>
+            <dd>
+                @Html.DisplayFor(model => model.ModelName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitCost)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UnitCost)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.imageUrl)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.imageUrl)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Categories_174866_MiniProj.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Categories_174866_MiniProj.CategoryName)
+            </dd>
+
+        </dl>*@
+</div>
+

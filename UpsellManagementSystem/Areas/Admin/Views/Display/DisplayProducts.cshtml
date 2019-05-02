@@ -1,0 +1,71 @@
+﻿@model IEnumerable<UpsellManagementSystem.Models.Products_174866_MiniProj>
+
+@{
+    ViewBag.Title = "Display";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<fieldset style="padding:20px">
+
+    @if (Session["AdminEmail"] != null)
+    {
+        <text>
+            Welcome <b>@Session["AdminEmail"].ToString()</b>,
+        </text>
+    }
+</fieldset>
+
+<h2>Display</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Model Number
+        </th>
+        <th>
+            Model Name
+        </th>
+        <th>
+            Unit Cost
+        </th>
+        <th>
+            Description
+        </th>
+        <th style="text-align:center">
+            Product Image
+        </th>
+        <th>
+            Category 
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.imageUrl)" alt="@Html.DisplayFor(modelItem => item.Description)" 
+                 style="width:100%;height:26rem"
+                 />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categories_174866_MiniProj.CategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Delete Product", "DeleteProduct", new { id = item.ProductsId })
+        </td>
+    </tr>
+}
+
+</table>

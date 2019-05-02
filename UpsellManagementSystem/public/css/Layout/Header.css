@@ -28,10 +28,11 @@ main {
     align-items: center;
 }
 
-.main-header__item-list {
+/*.main-header__item-list {
     list-style: none;
     display: flex;
-}
+    margin: 10px 0 10px;
+}*/
 
 
 .main-header__item {

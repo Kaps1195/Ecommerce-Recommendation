@@ -1,46 +1,39 @@
 ﻿@model UpsellManagementSystem.Models.Customers_174866_MiniProj
+
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Login", "Login", FormMethod.Post))
-{
-    <fieldset>
-        <legend>Login</legend>
+<h2>User Login Page</h2>
 
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-        @if (@ViewBag.Message != null)
-        {
-            <div style="border: 1px solid red">
-                @ViewBag.Message
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal container">
+        <div class="form-group">
+            Email : 
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
             </div>
-        }
-        <table>
-            <tr>
-                <td>@Html.LabelFor(a => a.Email)</td>
-                <td>@Html.TextBoxFor(a => a.Email)</td>
-                <td>@Html.ValidationMessageFor(a => a.Email)</td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(a => a.Password)
-                </td>
-                <td>
-                    @Html.PasswordFor(a => a.Password)
-                </td>
-                <td>
-                    @Html.ValidationMessageFor(a => a.Password)
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" value="Login" />
-                </td>
-                <td></td>
-            </tr>
-        </table>
-    </fieldset>
+        </div>
+
+        <div class="form-group">
+            Password : 
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
 }
