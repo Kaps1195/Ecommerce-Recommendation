@@ -5,6 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<fieldset style="padding:20px">
+    @if (Session["Email"] != null)
+    {
+        <text>
+            Welcome @Session["Email"].ToString(),
+        </text>
+    }
+</fieldset>
+
 <h2>Product Details</h2>
 
 <div>
@@ -42,7 +51,7 @@
                             @Html.ActionLink("Add to Cart", "Index", "ProductRecommend",new { submitProductId = Html.DisplayFor(model => model.ProductsId) }, new { @class = "btn" })
                         </span>
                         <span style="margin-left:10rem">
-                            @Html.ActionLink("Checkout", "Index", "ProductRecommend", new { @class = "btn" })
+                            @Html.ActionLink("Checkout", "Orders", "Orders", new { userSelectedProdid = Html.DisplayFor(model => model.ProductsId) }, new { @class = "btn" })
                         </span>
                     </li>
                 </ul>

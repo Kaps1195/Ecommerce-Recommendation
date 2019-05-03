@@ -31,7 +31,7 @@ namespace UpsellManagementSystem.Models
         public virtual DbSet<Products_174866_MiniProj> Products_174866_MiniProj { get; set; }
         public virtual DbSet<ProductsRecommend_174866_MiniProj> ProductsRecommend_174866_MiniProj { get; set; }
         public virtual DbSet<SalesTax_174866_MiniProj> SalesTax_174866_MiniProj { get; set; }
-        public virtual DbSet<ShoppingCart_174866_MiniProj> ShoppingCart_174866_MiniProj { get; set; }
         public virtual DbSet<Admin_174866_MiniProj> Admin_174866_MiniProj { get; set; }
+        public virtual DbSet<ShoppingCart_174866_MiniProj> ShoppingCart_174866_MiniProj { get; set; }
     }
 }

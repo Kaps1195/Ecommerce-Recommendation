@@ -78,13 +78,13 @@
         </EntityType>
         <EntityType Name="ShoppingCart_174866_MiniProj">
           <Key>
-            <PropertyRef Name="RecordId" />
+            <PropertyRef Name="cartId" />
           </Key>
-          <Property Name="RecordId" Type="int" Nullable="false" />
-          <Property Name="CartId" Type="int" />
-          <Property Name="Quantity" Type="int" />
-          <Property Name="ProductId" Type="int" />
-          <Property Name="DateCreated" Type="date" />
+          <Property Name="cartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productId" Type="int" />
+          <Property Name="cartImageUrl" Type="varchar" MaxLength="2083" />
+          <Property Name="cartModelName" Type="varchar" MaxLength="100" />
+          <Property Name="productPrice" Type="int" />
         </EntityType>
         <Association Name="FK__Orders_17__Custo__745BB106">
           <End Role="Customers_174866_MiniProj" Type="Self.Customers_174866_MiniProj" Multiplicity="0..1" />
@@ -134,7 +134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ShoppingC__Produ__7A148A5C">
+        <Association Name="FK__ShoppingC__produ__5E225724">
           <End Role="Products_174866_MiniProj" Type="Self.Products_174866_MiniProj" Multiplicity="0..1" />
           <End Role="ShoppingCart_174866_MiniProj" Type="Self.ShoppingCart_174866_MiniProj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -142,7 +142,7 @@
               <PropertyRef Name="ProductsId" />
             </Principal>
             <Dependent Role="ShoppingCart_174866_MiniProj">
-              <PropertyRef Name="ProductId" />
+              <PropertyRef Name="productId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -171,7 +171,7 @@
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
             <End Role="ProductsRecommend_174866_MiniProj" EntitySet="ProductsRecommend_174866_MiniProj" />
           </AssociationSet>
-          <AssociationSet Name="FK__ShoppingC__Produ__7A148A5C" Association="Self.FK__ShoppingC__Produ__7A148A5C">
+          <AssociationSet Name="FK__ShoppingC__produ__5E225724" Association="Self.FK__ShoppingC__produ__5E225724">
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
             <End Role="ShoppingCart_174866_MiniProj" EntitySet="ShoppingCart_174866_MiniProj" />
           </AssociationSet>
@@ -224,7 +224,7 @@
           <Property Name="imageUrl" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Categories_174866_MiniProj" Relationship="Self.FK__Products___Categ__6CBA8F3E" FromRole="Products_174866_MiniProj" ToRole="Categories_174866_MiniProj" />
           <NavigationProperty Name="ProductsRecommend_174866_MiniProj" Relationship="Self.FK__ProductsR__Produ__6F96FBE9" FromRole="Products_174866_MiniProj" ToRole="ProductsRecommend_174866_MiniProj" />
-          <NavigationProperty Name="ShoppingCart_174866_MiniProj" Relationship="Self.FK__ShoppingC__Produ__7A148A5C" FromRole="Products_174866_MiniProj" ToRole="ShoppingCart_174866_MiniProj" />
+          <NavigationProperty Name="ShoppingCart_174866_MiniProj" Relationship="DBModel.FK__ShoppingC__produ__5E225724" FromRole="Products_174866_MiniProj" ToRole="ShoppingCart_174866_MiniProj" />
         </EntityType>
         <EntityType Name="ProductsRecommend_174866_MiniProj">
           <Key>
@@ -251,17 +251,6 @@
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Jurisdiction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SalesTax" Type="Int32" />
-        </EntityType>
-        <EntityType Name="ShoppingCart_174866_MiniProj">
-          <Key>
-            <PropertyRef Name="RecordId" />
-          </Key>
-          <Property Name="RecordId" Type="Int32" Nullable="false" />
-          <Property Name="CartId" Type="Int32" />
-          <Property Name="Quantity" Type="Int32" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Products_174866_MiniProj" Relationship="Self.FK__ShoppingC__Produ__7A148A5C" FromRole="ShoppingCart_174866_MiniProj" ToRole="Products_174866_MiniProj" />
         </EntityType>
         <Association Name="FK__Products___Categ__6CBA8F3E">
           <End Role="Categories_174866_MiniProj" Type="Self.Categories_174866_MiniProj" Multiplicity="0..1" />
@@ -311,18 +300,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ShoppingC__Produ__7A148A5C">
-          <End Role="Products_174866_MiniProj" Type="Self.Products_174866_MiniProj" Multiplicity="0..1" />
-          <End Role="ShoppingCart_174866_MiniProj" Type="Self.ShoppingCart_174866_MiniProj" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products_174866_MiniProj">
-              <PropertyRef Name="ProductsId" />
-            </Principal>
-            <Dependent Role="ShoppingCart_174866_MiniProj">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories_174866_MiniProj" EntityType="Self.Categories_174866_MiniProj" />
           <EntitySet Name="Customers_174866_MiniProj" EntityType="Self.Customers_174866_MiniProj" />
@@ -330,7 +307,6 @@
           <EntitySet Name="Products_174866_MiniProj" EntityType="Self.Products_174866_MiniProj" />
           <EntitySet Name="ProductsRecommend_174866_MiniProj" EntityType="Self.ProductsRecommend_174866_MiniProj" />
           <EntitySet Name="SalesTax_174866_MiniProj" EntityType="Self.SalesTax_174866_MiniProj" />
-          <EntitySet Name="ShoppingCart_174866_MiniProj" EntityType="Self.ShoppingCart_174866_MiniProj" />
           <AssociationSet Name="FK__Products___Categ__6CBA8F3E" Association="Self.FK__Products___Categ__6CBA8F3E">
             <End Role="Categories_174866_MiniProj" EntitySet="Categories_174866_MiniProj" />
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
@@ -347,11 +323,12 @@
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
             <End Role="ProductsRecommend_174866_MiniProj" EntitySet="ProductsRecommend_174866_MiniProj" />
           </AssociationSet>
-          <AssociationSet Name="FK__ShoppingC__Produ__7A148A5C" Association="Self.FK__ShoppingC__Produ__7A148A5C">
+          <EntitySet Name="Admin_174866_MiniProj" EntityType="DBModel.Admin_174866_MiniProj" />
+          <EntitySet Name="ShoppingCart_174866_MiniProj" EntityType="DBModel.ShoppingCart_174866_MiniProj" />
+          <AssociationSet Name="FK__ShoppingC__produ__5E225724" Association="DBModel.FK__ShoppingC__produ__5E225724">
             <End Role="Products_174866_MiniProj" EntitySet="Products_174866_MiniProj" />
             <End Role="ShoppingCart_174866_MiniProj" EntitySet="ShoppingCart_174866_MiniProj" />
           </AssociationSet>
-          <EntitySet Name="Admin_174866_MiniProj" EntityType="DBModel.Admin_174866_MiniProj" />
         </EntityContainer>
         <EntityType Name="Admin_174866_MiniProj">
           <Key>
@@ -361,6 +338,29 @@
           <Property Name="AdminEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
           <Property Name="AdminPwd" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="ShoppingCart_174866_MiniProj">
+          <Key>
+            <PropertyRef Name="cartId" />
+          </Key>
+          <Property Name="cartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productId" Type="Int32" />
+          <Property Name="cartImageUrl" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <Property Name="cartModelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="productPrice" Type="Int32" />
+          <NavigationProperty Name="Products_174866_MiniProj" Relationship="DBModel.FK__ShoppingC__produ__5E225724" FromRole="ShoppingCart_174866_MiniProj" ToRole="Products_174866_MiniProj" />
+        </EntityType>
+        <Association Name="FK__ShoppingC__produ__5E225724">
+          <End Type="DBModel.Products_174866_MiniProj" Role="Products_174866_MiniProj" Multiplicity="0..1" />
+          <End Type="DBModel.ShoppingCart_174866_MiniProj" Role="ShoppingCart_174866_MiniProj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products_174866_MiniProj">
+              <PropertyRef Name="ProductsId" />
+            </Principal>
+            <Dependent Role="ShoppingCart_174866_MiniProj">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -436,23 +436,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ShoppingCart_174866_MiniProj">
-            <EntityTypeMapping TypeName="DBModel.ShoppingCart_174866_MiniProj">
-              <MappingFragment StoreEntitySet="ShoppingCart_174866_MiniProj">
-                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
-                <ScalarProperty Name="CartId" ColumnName="CartId" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Admin_174866_MiniProj">
             <EntityTypeMapping TypeName="DBModel.Admin_174866_MiniProj">
               <MappingFragment StoreEntitySet="Admin_174866_MiniProj">
                 <ScalarProperty Name="AdminPwd" ColumnName="AdminPwd" />
                 <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
                 <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingCart_174866_MiniProj">
+            <EntityTypeMapping TypeName="DBModel.ShoppingCart_174866_MiniProj">
+              <MappingFragment StoreEntitySet="ShoppingCart_174866_MiniProj">
+                <ScalarProperty Name="productPrice" ColumnName="productPrice" />
+                <ScalarProperty Name="cartModelName" ColumnName="cartModelName" />
+                <ScalarProperty Name="cartImageUrl" ColumnName="cartImageUrl" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="cartId" ColumnName="cartId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

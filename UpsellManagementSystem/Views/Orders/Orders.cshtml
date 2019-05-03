@@ -1,0 +1,48 @@
+﻿@model UpsellManagementSystem.Models.ShoppingCart_174866_MiniProj
+
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset style="padding:20px">
+    @if (Session["Email"] != null)
+    {
+        <text>
+            <h2>Welcome @Session["Email"].ToString(),</h2>
+        </text>
+    }
+</fieldset>
+
+<h2>Orders</h2>
+
+<div>
+    <h4>Your Cart</h4>
+   
+    <table class="table">
+        <tr>
+            <th>
+                Product Image
+            </th>
+            <th>
+                Model Name
+            </th>
+            <th>
+                Product Price
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                <img src="@Model.cartImageUrl" alt="@Model.cartModelName" style="width:15%;height:6rem" />
+            </td>
+            <td>
+                @Model.cartModelName
+            </td>
+            <td>
+               $ @Model.productPrice
+            </td>
+        </tr>
+    </table>
+</div>
+

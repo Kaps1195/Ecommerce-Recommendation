@@ -34,19 +34,11 @@ namespace UpsellManagementSystem.Controllers
             return View(searchModelName);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Index(Products_174866_MiniProj submitProduct)
-        //{
-        //    //string value = Convert.ToString(data["submitProduct"]);
-
-        //    TempData["userSelectedProduct"] = submitProduct;
-
-        //    return RedirectToAction("ProductDetail", "ProductDetails", new { selectedProd = submitProduct });
-
-        //    return RedirectToAction("ProductDetail", "ProductDetails");
-
-        //}
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index","HomePage");
+        }
 
     }
 }

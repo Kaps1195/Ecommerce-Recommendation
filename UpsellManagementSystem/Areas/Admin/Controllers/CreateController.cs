@@ -40,5 +40,20 @@ namespace UpsellManagementSystem.Areas.Admin.Controllers
             _product.SaveChanges();
             return View(newProduct);
         }
+
+        public ActionResult AddRecommendProduct()
+        {
+            return View();
+        }
+
+        // GET: Admin/Create/AddRecommendProduct
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddRecommendProduct(ProductsRecommend_174866_MiniProj newRecProduct)
+        {
+            _product.ProductsRecommend_174866_MiniProj.Add(newRecProduct);
+            _product.SaveChanges();
+            return View(newRecProduct);
+        }
     }
 }

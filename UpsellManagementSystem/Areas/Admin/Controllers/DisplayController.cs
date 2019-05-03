@@ -23,6 +23,12 @@ namespace UpsellManagementSystem.Areas.Admin.Controllers
             return View(_display.Categories_174866_MiniProj.ToList());
         }
 
+        // GET: Admin/Display/DisplayRecommendedProducts
+        public ActionResult DisplayRecommendedProducts()
+        {
+            return View(_display.ProductsRecommend_174866_MiniProj.ToList());
+        }
+
         public ActionResult DeleteProduct(int? id)
         {
             var products = _display.Products_174866_MiniProj.Where(x => x.ProductsId == id).FirstOrDefault();
