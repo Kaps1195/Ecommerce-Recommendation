@@ -37,7 +37,8 @@
                 </li>
                 <li class="main-header__item">
                     <div class="nav-item">
-                        <a href="/Login/Login" class="nav-link">Logout</a>
+                        <input type="button" class="nav-link" id="btnLogout" value="Logout" onclick="location.href='@Url.Action("Logout","Login")'"/>
+                        @*@Html.ActionLink("Logout", "Logout", "Login", new { @class = "nav-link" } )*@
                     </div>
                 </li>
             </ul>

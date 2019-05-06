@@ -28,7 +28,17 @@ namespace UpsellManagementSystem.Areas.Admin.Controllers
 
         public ActionResult AddProduct()
         {
+            TempData["CategoryList"] = new SelectList(GetCategoryList(),"Value"); 
             return View();
+        }
+
+        // List : To store Category List
+        private List<SelectListItem> GetCategoryList()
+        {
+            return _product.Categories_174866_MiniProj.Select(e => new SelectListItem
+            {
+                Value = e.CategoryId.ToString()
+            }).ToList();
         }
 
         // GET: Admin/Create/AddProduct

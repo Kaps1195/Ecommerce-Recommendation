@@ -34,11 +34,5 @@ namespace UpsellManagementSystem.Controllers
             return View(searchModelName);
         }
 
-        public ActionResult Logout()
-        {
-            Session.Clear();
-            return RedirectToAction("Index","HomePage");
-        }
-
     }
 }

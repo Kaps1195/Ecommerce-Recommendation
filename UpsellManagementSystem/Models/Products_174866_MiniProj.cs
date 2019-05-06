@@ -20,7 +20,7 @@ namespace UpsellManagementSystem.Models
             this.ProductsRecommend_174866_MiniProj = new HashSet<ProductsRecommend_174866_MiniProj>();
             this.ShoppingCart_174866_MiniProj = new HashSet<ShoppingCart_174866_MiniProj>();
         }
-    
+   
         public int ProductsId { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public Nullable<int> ModelNumber { get; set; }

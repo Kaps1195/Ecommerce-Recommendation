@@ -32,5 +32,11 @@ namespace UpsellManagementSystem.Controllers
             }
             return View(objUser);
         }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Login");
+        }
     }
 }

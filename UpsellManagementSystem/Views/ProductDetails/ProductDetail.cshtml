@@ -31,13 +31,13 @@
                         <h3 class="card-title">@Html.DisplayFor(model => model.ModelName)</h3>
                     </li>
                     <li style="list-style:none">
-                        <div id="product">$  @Html.DisplayFor(model => model.UnitCost) </div>
+                        <div id="product"> @Html.DisplayFor(model => model.UnitCost) </div>
                         +
                         <div> $ 5.00 (General Tax on every product) </div>
                         <hr />
                     </li>
-                    <li style="list-style:none" onload="calculatePrice()">
-                        <div id="price">
+                    <li style="list-style:none" >
+                        <div id="price" onload="calculatePrice()">
                             @*<p>Total Price : </p>*@
                         </div>
                     </li>

@@ -39,6 +39,12 @@
                         <a href="DisplayProducts" class="nav-link">Display Products</a>
                     </div>
                 </li>
+                <li class="main-header__item">
+                    <div class="nav-item">
+                        <input type="button" class="nav-link" id="btnLogout" value="Logout" onclick="location.href='@Url.Action("AdminLogout","AdminLogin")'" />
+                        @*@Html.ActionLink("Logout", "Logout", "Login", new { @class = "nav-link" } )*@
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>

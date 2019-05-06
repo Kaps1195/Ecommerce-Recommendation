@@ -33,5 +33,11 @@ namespace UpsellManagementSystem.Areas.Admin.Controllers
             }
             return View(objAdmin);
         }
+
+        public ActionResult AdminLogout()
+        {
+            Session.Clear();
+            return RedirectToAction("AdminLogin", "AdminLogin");
+        }
     }
 }

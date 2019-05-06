@@ -11,11 +11,14 @@ namespace UpsellManagementSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Admin_174866_MiniProj
     {
         public int AdminId { get; set; }
+        [Required]
         public string AdminEmail { get; set; }
+        [Required]
         public string AdminPwd { get; set; }
     }
 }
